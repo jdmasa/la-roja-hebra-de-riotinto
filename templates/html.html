@@ -18,6 +18,12 @@ $endif$
     $styles.html()$
     $style.css()$
   </style>
+  <style>
+  /* Headings marked .hidden-title keep a real TOC entry but render nothing
+     visible on the page — the chapter's actual "title" is content the
+     author places below it (e.g. a decorative image). */
+  .hidden-title { display: none; }
+  </style>
 $for(css)$
   <link rel="stylesheet" href="$css$" />
 $endfor$

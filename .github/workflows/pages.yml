@@ -1,0 +1,53 @@
+name: Deploy HTML to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: pandoc/core:latest
+
+    steps:
+      - name: Install build dependencies
+        run: apk add --no-cache git openssh-client make
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build HTML
+        run: make html
+
+      - name: Add index.html
+        # GitHub Pages serves index.html at the site root; the Makefile
+        # names its output book.html (matching every other format), so
+        # copy it rather than renaming the shared OUTPUT_FILENAME.
+        run: cp build/html/book.html build/html/index.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
