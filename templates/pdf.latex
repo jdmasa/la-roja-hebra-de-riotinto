@@ -430,6 +430,14 @@ $else$
 $endif$
 
 \begin{document}
+$if(beamer)$
+$else$
+% Plain, consistently-placed page numbers throughout (the book class's
+% default \pagestyle{headings} alternates footer/header position and adds
+% running chapter headers on non-opening pages, which reads as inconsistent
+% and unwanted here).
+\pagestyle{plain}
+$endif$
 $if(has-frontmatter)$
 \frontmatter
 $endif$
