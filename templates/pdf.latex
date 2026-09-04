@@ -231,12 +231,14 @@ $endif$
 $if(verbatim-in-note)$
 \VerbatimFootnotes % allow verbatim text in footnotes
 $endif$
-$if(geometry)$
 $if(beamer)$
+$if(geometry)$
 \geometry{$for(geometry)$$geometry$$sep$,$endfor$}
-$else$
-\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
+$else$
+% Always loaded (not just when a custom `geometry` metadata is set) so
+% \newgeometry/\restoregeometry are available for the full-bleed cover image.
+\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
 $endif$
 $if(beamer)$
 \newif\ifbibliography
@@ -437,18 +439,16 @@ $if(title)$
 $endif$
 $else$
 $if(cover-image)$
-\thispagestyle{empty}
-\begin{center}
-\vspace*{\fill}
-\noindent\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{$cover-image$}
-\vspace*{\fill}
-\end{center}
-\clearpage
+\begin{titlepage}
+\newgeometry{margin=0pt}
+\noindent\includegraphics[width=\paperwidth,height=\paperheight]{$cover-image$}
+\restoregeometry
+\end{titlepage}
 $endif$
 $if(title)$
 % First title page: title and subtitle only.
-\thispagestyle{empty}
-\begin{center}
+\begin{titlepage}
+\centering
 \vspace*{\fill}
 {\Huge\bfseries $title$\par}
 $if(subtitle)$
@@ -456,14 +456,14 @@ $if(subtitle)$
 {\Large\itshape $subtitle$\par}
 $endif$
 \vspace*{\fill}
-\end{center}
-\clearpage
+\end{titlepage}
+\newpage
 \thispagestyle{empty}
 \mbox{}
-\clearpage
+\newpage
 % Second title page: title, subtitle, and author.
-\thispagestyle{empty}
-\begin{center}
+\begin{titlepage}
+\centering
 \vspace*{\fill}
 {\Huge\bfseries $title$\par}
 $if(subtitle)$
@@ -473,11 +473,11 @@ $endif$
 \vspace{2em}
 {\large $for(author)$$author$$sep$ \and $endfor$\par}
 \vspace*{\fill}
-\end{center}
-\clearpage
+\end{titlepage}
+\newpage
 \thispagestyle{empty}
 \mbox{}
-\clearpage
+\newpage
 $endif$
 $endif$
 
