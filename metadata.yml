@@ -13,6 +13,14 @@ abstract: |
   bajo la sombra de la Rio Tinto Company.
 mainfont: DejaVu Sans
 linkReferences: true
+# book + openany/oneside: proper chapter breaks (each chapter starts on its
+# own page) without the print-book convention of forcing chapters onto
+# right-hand pages (which would insert extra blank pages unpredictably).
+documentclass: book
+classoption: [openany, oneside]
+# Full-page cover image on the PDF's very first page (the EPUB gets its
+# cover separately, via --epub-cover-image in the Makefile).
+cover-image: images/cover.png
 # Closing "colophon" stamp on the PDF's back-of-book page, right below the
 # table of contents: a QR code (e.g. linking to a copyright registration or
 # verification page) next to a license badge image. Both must be set for

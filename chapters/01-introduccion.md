@@ -1,6 +1,20 @@
-# Introducción
+# Introducción {.hidden-title}
 
 ![](images/pipe.png){ width=15% }
+
+> *Mira, Platero, cómo han puesto el río entre las minas, el mal corazón y el padrastreo. Apenas si
+> su agua roja recoge aquí y allá, esta tarde, entre el fango violeta y amarillo, el sol poniente; y
+> por su cauce casi sólo pueden ir barcas de juguete. ¡Qué pobreza!*
+>
+> *El cobre de Riotinto lo ha envenenado todo. Y menos mal, Platero, que con el asco de los ricos,
+> comen los pobres la pesca miserable de hoy... Pero el falucho, el bergantín, el laúd, todos se
+> perdieron.*
+>
+> — Juan Ramón Jiménez, *Platero y yo*, Cap. XCV, «El río»
+
+```{=latex}
+\newpage
+```
 
 No es poco frecuente que, al repasar los polvorientos y amarillentos legajos que pueblan mi baúl
 de metal de la firma Halstaff & Hannaford, me asalte un sentimiento de profunda melancolía

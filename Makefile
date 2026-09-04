@@ -16,11 +16,18 @@ CHAPTERS = chapters/*.md
 # templates/pdf.latex, positioned after the (relocated) table of contents.
 BACKMATTER = backmatter/*.md
 TOC = --toc --toc-depth 2
+DIVISION = --top-level-division=chapter
 METADATA_ARGS = --metadata-file $(METADATA)
 IMAGES = $(shell find images -type f)
 TEMPLATES = $(shell find templates/ -type f)
 COVER_IMAGE = images/cover.png
 MATH_FORMULAS = --webtex
+
+# Lua filters that are always applied (as opposed to FILTER_ARGS below, which
+# is an opt-in slot for the user's own filters, e.g. pandoc-crossref).
+FILTERS_DIR = filters
+FILTERS_FILES = $(shell find $(FILTERS_DIR) -type f)
+FILTERS = --lua-filter $(FILTERS_DIR)/hidden-title.lua
 
 # Chapters content
 CONTENT = awk 'FNR==1 && NR!=1 {print "\n\n"}{print}' $(CHAPTERS)
@@ -38,7 +45,7 @@ CONTENT_FILTERS = tee # Use this to add sed filters or other piped commands
 
 # Combined arguments
 
-ARGS = $(TOC) $(MATH_FORMULAS) $(METADATA_ARGS) $(FILTER_ARGS) $(DEBUG_ARGS)
+ARGS = $(TOC) $(DIVISION) $(MATH_FORMULAS) $(METADATA_ARGS) $(FILTERS) $(FILTER_ARGS) $(DEBUG_ARGS)
 	
 PANDOC_COMMAND = pandoc
 
@@ -51,7 +58,7 @@ PDF_ARGS = --template templates/pdf.latex --pdf-engine xelatex
 
 # Per-format file dependencies
 
-BASE_DEPENDENCIES = $(MAKEFILE) $(CHAPTERS) $(METADATA) $(IMAGES) $(TEMPLATES)
+BASE_DEPENDENCIES = $(MAKEFILE) $(CHAPTERS) $(METADATA) $(IMAGES) $(TEMPLATES) $(FILTERS_FILES)
 DOCX_DEPENDENCIES = $(BASE_DEPENDENCIES)
 EPUB_DEPENDENCIES = $(BASE_DEPENDENCIES) $(BACKMATTER)
 HTML_DEPENDENCIES = $(BASE_DEPENDENCIES)

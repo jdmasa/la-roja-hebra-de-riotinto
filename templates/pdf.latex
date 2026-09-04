@@ -418,20 +418,66 @@ $if(logo)$
 $endif$
 $endif$
 
+$if(beamer)$
+$else$
+% Center chapter titles (still unnumbered, since --number-sections isn't
+% used) instead of the LaTeX book class's default flush-left layout.
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\centering\normalfont\huge\bfseries}{}{0pt}{}
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+$endif$
+
 \begin{document}
 $if(has-frontmatter)$
 \frontmatter
 $endif$
-$if(title)$
 $if(beamer)$
+$if(title)$
 \frame{\titlepage}
-$else$
-\maketitle
 $endif$
-$if(abstract)$
-\begin{abstract}
-$abstract$
-\end{abstract}
+$else$
+$if(cover-image)$
+\thispagestyle{empty}
+\begin{center}
+\vspace*{\fill}
+\noindent\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{$cover-image$}
+\vspace*{\fill}
+\end{center}
+\clearpage
+$endif$
+$if(title)$
+% First title page: title and subtitle only.
+\thispagestyle{empty}
+\begin{center}
+\vspace*{\fill}
+{\Huge\bfseries $title$\par}
+$if(subtitle)$
+\vspace{1em}
+{\Large\itshape $subtitle$\par}
+$endif$
+\vspace*{\fill}
+\end{center}
+\clearpage
+\thispagestyle{empty}
+\mbox{}
+\clearpage
+% Second title page: title, subtitle, and author.
+\thispagestyle{empty}
+\begin{center}
+\vspace*{\fill}
+{\Huge\bfseries $title$\par}
+$if(subtitle)$
+\vspace{1em}
+{\Large\itshape $subtitle$\par}
+$endif$
+\vspace{2em}
+{\large $for(author)$$author$$sep$ \and $endfor$\par}
+\vspace*{\fill}
+\end{center}
+\clearpage
+\thispagestyle{empty}
+\mbox{}
+\clearpage
 $endif$
 $endif$
 
