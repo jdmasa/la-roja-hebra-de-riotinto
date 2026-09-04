@@ -41,6 +41,9 @@ $endfor$
 $for(include-before)$
 $include-before$
 $endfor$
+$if(cover-image)$
+<p style="text-align: center;"><img src="$cover-image$" alt="Cover" style="max-width: 100%; height: auto;" /></p>
+$endif$
 $if(title)$
 <header id="title-block-header">
 <h1 class="title">$title$</h1>
@@ -64,6 +67,14 @@ $table-of-contents$
 </nav>
 $endif$
 $body$
+$if(qr-image)$
+$if(license-badge-image)$
+<div style="text-align: center; margin-top: 2em;">
+<img src="$qr-image$" alt="QR code" style="width: 30%; display: inline-block;" />
+<img src="$license-badge-image$" alt="License badge" style="width: 45%; display: inline-block; margin-left: 1em;" />
+</div>
+$endif$
+$endif$
 $for(include-after)$
 $include-after$
 $endfor$
