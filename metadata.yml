@@ -1,13 +1,16 @@
 ---
-title: My Book Title
-author: Your Name
-rights: All rights reserved
-lang: en-US
-mainlang: english
-otherlang: english
-tags: [pandoc, ebook]
+title: La Roja Hebra de Riotinto
+subtitle: Una Crónica de Sherlock Holmes en la Huelva Minera
+author: José Masa
+rights: CC BY-ND 4.0
+lang: es-ES
+mainlang: spanish
+otherlang: spanish
+tags: [sherlock-holmes, riotinto, huelva, crónica, cc-by-nd]
 abstract: |
-  A short summary of the book, shown in EPUB metadata and some e-readers.
+  Una crónica inédita del baúl de Watson: en 1888, Sherlock Holmes viaja a las minas de Riotinto
+  (Huelva) para investigar un asesinato que amenaza con ocultar la represión de una huelga minera
+  bajo la sombra de la Rio Tinto Company.
 mainfont: DejaVu Sans
 linkReferences: true
 # Closing "colophon" stamp on the PDF's back-of-book page, right below the

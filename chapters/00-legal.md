@@ -1,6 +1,6 @@
-**Autoría:** Nombre del autor o autora
+**Autoría:** José David Masa Rodríguez
 
-Obra registrada en Safe Creative con el código: 0000000000000
+Obra registrada en Safe Creative con el código: 2605125633331
 
 **Asistencia Técnica:** Esta obra ha sido creada con la asistencia de Inteligencia Artificial para
 tareas de generación de borradores, bajo la dirección creativa y edición final del autor.
@@ -22,6 +22,6 @@ El autor se reserva el derecho exclusivo de autorizar traducciones, adaptaciones
 cualquier otra obra derivada. Si tiene interés en transformar esta obra o desea negociar una
 licencia para usos no cubiertos por la CC BY-ND, por favor contacte a:
 
-correo@ejemplo.com
+info@masatrad.com
 
-www.ejemplo.com
+www.masatrad.com
