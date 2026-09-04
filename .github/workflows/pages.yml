@@ -22,7 +22,9 @@ jobs:
 
     steps:
       - name: Install build dependencies
-        run: apk add --no-cache git openssh-client make
+        # tar: actions/upload-pages-artifact needs GNU tar's --hard-dereference,
+        # which Alpine's built-in busybox tar applet doesn't support.
+        run: apk add --no-cache git openssh-client make tar
 
       - name: Checkout
         uses: actions/checkout@v4
