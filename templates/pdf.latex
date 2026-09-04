@@ -449,7 +449,11 @@ $else$
 $if(cover-image)$
 \begin{titlepage}
 \newgeometry{margin=0pt}
-\noindent\includegraphics[width=\paperwidth,height=\paperheight]{$cover-image$}
+\begin{center}
+\vspace*{\fill}
+\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{$cover-image$}
+\vspace*{\fill}
+\end{center}
 \restoregeometry
 \end{titlepage}
 $endif$

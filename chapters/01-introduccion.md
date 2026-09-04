@@ -1,6 +1,12 @@
 # Introducción {.hidden-title}
 
-![](images/pipe.png){ width=15% }
+```{=latex}
+\begin{center}
+```
+![](images/pipe.png){ width=15% style="display:block;margin:0 auto" }
+```{=latex}
+\end{center}
+```
 
 > *Mira, Platero, cómo han puesto el río entre las minas, el mal corazón y el padrastreo. Apenas si
 > su agua roja recoge aquí y allá, esta tarde, entre el fango violeta y amarillo, el sol poniente; y

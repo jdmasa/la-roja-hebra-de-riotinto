@@ -18,6 +18,10 @@ linkReferences: true
 # right-hand pages (which would insert extra blank pages unpredictably).
 documentclass: book
 classoption: [openany, oneside]
+toc-title: Índice
+# Make both the title text and the page number clickable in the PDF's table
+# of contents (hyperref's default only links the title text).
+hyperrefoptions: [linktoc=all]
 # Full-page cover image on the PDF's very first page (the EPUB gets its
 # cover separately, via --epub-cover-image in the Makefile).
 cover-image: images/cover.png
