@@ -1,0 +1,35 @@
+name: Build check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: pandoc/latex:latest
+
+    steps:
+      - name: Install build dependencies
+        run: apk add --no-cache git openssh-client make texlive-xetex texmf-dist-latexrecommended ttf-dejavu
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build all formats
+        env:
+          # This image's own TeX Live tree (/opt/texlive/texdir) doesn't include
+          # the Alpine-packaged texmf-dist-* files (installed under
+          # /usr/share/texmf-dist), so point TeX at them explicitly.
+          TEXINPUTS: "/usr/share/texmf-dist/tex//:"
+        run: make book
+
+      - name: Verify outputs
+        run: |
+          test -s build/epub/book.epub
+          test -s build/pdf/book.pdf
+          test -s build/html/book.html
+          test -s build/docx/book.docx

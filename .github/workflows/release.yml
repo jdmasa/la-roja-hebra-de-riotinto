@@ -1,0 +1,36 @@
+name: Build and publish release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: pandoc/latex:latest
+
+    steps:
+      - name: Install build dependencies
+        run: apk add --no-cache git openssh-client make texlive-xetex texmf-dist-latexrecommended ttf-dejavu
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build epub and pdf
+        env:
+          # This image's own TeX Live tree (/opt/texlive/texdir) doesn't include
+          # the Alpine-packaged texmf-dist-* files (installed under
+          # /usr/share/texmf-dist), so point TeX at them explicitly.
+          TEXINPUTS: "/usr/share/texmf-dist/tex//:"
+        run: make epub pdf
+
+      - name: Attach books to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build/epub/book.epub
+            build/pdf/book.pdf
