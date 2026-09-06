@@ -1,8 +1,43 @@
-# Bookish
+# La Roja Hebra de Riotinto
 
-Write a book in Markdown, push it to GitHub, and cut a Release to get an EPUB and a PDF built
-and attached automatically. Built on [Pandoc](https://pandoc.org/) and adapted from
-[wikiti/pandoc-book-template](https://github.com/wikiti/pandoc-book-template).
+**Una crónica inédita del baúl de Watson.** En mayo de 1887, un directivo de la Rio Tinto Company
+le pide a Sherlock Holmes que viaje a Huelva para desacreditar a un agitador minero; Holmes se
+niega. Meses después, una carta desesperada de una maestra de San Juan del Puerto lo hace cambiar
+de opinión: su marido va a ser ejecutado por un crimen que no cometió. La investigación llevará a
+Holmes y Watson hasta la cuenca minera de Riotinto, donde las «teleras» envenenan el aire y la
+tierra, la Rio Tinto Company gobierna como un feudo privado, y la tensión entre mineros y compañía
+estalla en la matanza de 1888 conocida como el «Año de los Tiros». Una novela corta de crimen y
+pastiche victoriano ambientada en la Huelva minera del siglo XIX, con Maximiliano Tornet, la Liga
+Antihumos y la sombra del garrote vil de fondo.
+
+Obra de José Masa (José David Masa Rodríguez), publicada bajo licencia
+[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/deed.es). Descarga el EPUB y el PDF
+en la sección [Releases](../../releases), o lee la versión web en
+[jdmasa.github.io/la-roja-hebra-de-riotinto](https://jdmasa.github.io/la-roja-hebra-de-riotinto/).
+
+**An unpublished chronicle from Watson's trunk.** In May 1887, a Rio Tinto Company director asks
+Sherlock Holmes to travel to Huelva, Spain, to discredit a labor agitator; Holmes refuses. Months
+later, a schoolteacher's desperate letter changes his mind: her husband is about to be executed for
+a murder he didn't commit. The investigation takes Holmes and Watson into the Riotinto mining
+basin, where open-air ore roasting poisons the air and soil, the Rio Tinto Company rules like a
+private fiefdom, and tension between miners and company erupts into the real 1888 massacre known as
+the "Year of the Shots." A Victorian-pastiche crime novella set in 19th-century industrial Spain.
+
+Written by José Masa (José David Masa Rodríguez), released under
+[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/). Download the EPUB and PDF from
+[Releases](../../releases), or read the web version at
+[jdmasa.github.io/la-roja-hebra-de-riotinto](https://jdmasa.github.io/la-roja-hebra-de-riotinto/).
+
+---
+
+## Bookish
+
+This book is built with **Bookish**, a reusable framework: write a book in Markdown, push it to
+GitHub, and cut a Release to get an EPUB and a PDF built and attached automatically. Built on
+[Pandoc](https://pandoc.org/) and adapted from
+[wikiti/pandoc-book-template](https://github.com/wikiti/pandoc-book-template). The rest of this
+README documents the framework itself — see [jdmasa/bookish](https://github.com/jdmasa/bookish) for
+the reusable template this repo was created from.
 
 ## Folder structure
 
