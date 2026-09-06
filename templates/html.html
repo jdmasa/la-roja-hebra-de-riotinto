@@ -21,8 +21,11 @@ $endif$
   <style>
   /* Headings marked .hidden-title keep a real TOC entry but render nothing
      visible on the page — the chapter's actual "title" is content the
-     author places below it (e.g. a decorative image). */
-  .hidden-title { display: none; }
+     author places below it (e.g. a decorative image). Selector kept
+     h1-specific for consistency with epub.html, where a bare .hidden-title
+     selector would also hide the wrapping <section> (and thus the whole
+     chapter), not just the heading. */
+  h1.hidden-title { display: none; }
   </style>
 $for(css)$
   <link rel="stylesheet" href="$css$" />
