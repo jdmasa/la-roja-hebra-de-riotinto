@@ -447,20 +447,21 @@ $if(title)$
 $endif$
 $else$
 $if(cover-image)$
-% Not using the titlepage environment here: it calls \newpage internally
-% before \newgeometry runs, and a geometry change requested after a page
-% has already been opened applies starting from the *next* page instead,
-% leaving the cover's own page blank and the image on the page after it.
+% Deliberately not attempting a true edge-to-edge bleed here (which would
+% need a \newgeometry/\restoregeometry margin change): every variant tried
+% left a stray blank page around the cover, because a geometry change
+% requested once a page is already open applies starting from the *next*
+% page instead of the current one — a timing trap that isn't worth the
+% marginal visual gain of a borderless cover. Centered within the normal
+% margins instead; simple and reliably one page, no more, no less.
 \clearpage
-\newgeometry{margin=0pt}
 \thispagestyle{empty}
 \begin{center}
 \vspace*{\fill}
-\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{$cover-image$}
+\includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{$cover-image$}
 \vspace*{\fill}
 \end{center}
 \clearpage
-\restoregeometry
 $endif$
 $if(title)$
 % First title page: title and subtitle only.
