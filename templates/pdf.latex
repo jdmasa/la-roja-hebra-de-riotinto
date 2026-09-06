@@ -427,6 +427,9 @@ $else$
 \usepackage{titlesec}
 \titleformat{\chapter}[display]{\centering\normalfont\huge\bfseries}{}{0pt}{}
 \titlespacing*{\chapter}{0pt}{0pt}{40pt}
+% For positioning the optional cover-image as a page-relative overlay,
+% independent of the normal text area (see the cover-image block below).
+\usepackage{tikz}
 $endif$
 
 \begin{document}
@@ -447,20 +450,21 @@ $if(title)$
 $endif$
 $else$
 $if(cover-image)$
-% Sized to the full page (not just the text area), so the image's larger
-% side fills the corresponding page dimension and it bleeds into the
-% margins — keepaspectratio still avoids distortion. This only sizes the
-% image itself, not the page's geometry/margins, so it doesn't trip the
-% \newgeometry-timing bug that caused the earlier blank-page issue (that
-% was specifically about changing margins, not about how big the image is
-% allowed to render).
+% Positioned via TikZ's absolute "current page" coordinate system rather
+% than normal text flow: sizing an image to \paperwidth/\paperheight while
+% it's still laid out inside the (smaller, margin-constrained) text area
+% forces an overflow — the image demands more height than fits between the
+% margins, and LaTeX's output routine responds by breaking pages strangely
+% (a stray blank page, a cropped image, and the page numbering visibly
+% derailed). Placing it as a page-relative overlay sidesteps the text area
+% entirely, so there's nothing for the image to overflow.
 \clearpage
 \thispagestyle{empty}
-\begin{center}
-\vspace*{\fill}
-\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{$cover-image$}
-\vspace*{\fill}
-\end{center}
+\begin{tikzpicture}[remember picture, overlay]
+\node[inner sep=0pt] at (current page.center) {%
+  \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{$cover-image$}%
+};
+\end{tikzpicture}
 \clearpage
 $endif$
 $if(title)$

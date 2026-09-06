@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Install build dependencies
-        run: apk add --no-cache git openssh-client make texlive-xetex texmf-dist-latexrecommended texmf-dist-latexextra ttf-dejavu
+        run: apk add --no-cache git openssh-client make texlive-xetex texmf-dist-latexrecommended texmf-dist-latexextra texmf-dist-pictures ttf-dejavu
 
       - name: Checkout
         uses: actions/checkout@v4
