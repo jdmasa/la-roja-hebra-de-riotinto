@@ -447,18 +447,18 @@ $if(title)$
 $endif$
 $else$
 $if(cover-image)$
-% Deliberately not attempting a true edge-to-edge bleed here (which would
-% need a \newgeometry/\restoregeometry margin change): every variant tried
-% left a stray blank page around the cover, because a geometry change
-% requested once a page is already open applies starting from the *next*
-% page instead of the current one — a timing trap that isn't worth the
-% marginal visual gain of a borderless cover. Centered within the normal
-% margins instead; simple and reliably one page, no more, no less.
+% Sized to the full page (not just the text area), so the image's larger
+% side fills the corresponding page dimension and it bleeds into the
+% margins — keepaspectratio still avoids distortion. This only sizes the
+% image itself, not the page's geometry/margins, so it doesn't trip the
+% \newgeometry-timing bug that caused the earlier blank-page issue (that
+% was specifically about changing margins, not about how big the image is
+% allowed to render).
 \clearpage
 \thispagestyle{empty}
 \begin{center}
 \vspace*{\fill}
-\includegraphics[width=\linewidth,height=0.9\textheight,keepaspectratio]{$cover-image$}
+\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{$cover-image$}
 \vspace*{\fill}
 \end{center}
 \clearpage
