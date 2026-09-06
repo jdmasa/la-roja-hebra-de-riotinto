@@ -447,15 +447,20 @@ $if(title)$
 $endif$
 $else$
 $if(cover-image)$
-\begin{titlepage}
+% Not using the titlepage environment here: it calls \newpage internally
+% before \newgeometry runs, and a geometry change requested after a page
+% has already been opened applies starting from the *next* page instead,
+% leaving the cover's own page blank and the image on the page after it.
+\clearpage
 \newgeometry{margin=0pt}
+\thispagestyle{empty}
 \begin{center}
 \vspace*{\fill}
 \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{$cover-image$}
 \vspace*{\fill}
 \end{center}
+\clearpage
 \restoregeometry
-\end{titlepage}
 $endif$
 $if(title)$
 % First title page: title and subtitle only.

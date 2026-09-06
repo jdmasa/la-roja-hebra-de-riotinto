@@ -18,10 +18,6 @@
 >
 > — Juan Ramón Jiménez, *Platero y yo*, Cap. XCV, «El río»
 
-```{=latex}
-\newpage
-```
-
 No es poco frecuente que, al repasar los polvorientos y amarillentos legajos que pueblan mi baúl
 de metal de la firma Halstaff & Hannaford, me asalte un sentimiento de profunda melancolía
 mezclado con una cautela casi instintiva. En aquel receptáculo descansan registros de crímenes que
