@@ -19,13 +19,25 @@ $endif$
     $style.css()$
   </style>
   <style>
-  /* Headings marked .hidden-title keep a real TOC entry but render nothing
-     visible on the page — the chapter's actual "title" is content the
+  /* Headings marked .hidden-title keep a real TOC entry, but no visible
+     title text on the page — the chapter's actual "title" is content the
      author places below it (e.g. a decorative image). Selector kept
      h1-specific for consistency with epub.html, where a bare .hidden-title
-     selector would also hide the wrapping <section> (and thus the whole
-     chapter), not just the heading. */
-  h1.hidden-title { display: none; }
+     selector would also hide the wrapping section element (and thus the
+     whole chapter), not just the heading. Visually hidden rather than
+     display:none, which would also remove it from layout and break the
+     TOC link's anchor jump to it. */
+  h1.hidden-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    padding: 0;
+    margin: -1px;
+  }
   </style>
 $for(css)$
   <link rel="stylesheet" href="$css$" />
